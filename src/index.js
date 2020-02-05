@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Amplify from 'aws-amplify';
-import config from './config';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// Standard React App imports
+import React from "react";
+import ReactDOM from "react-dom";
+import * as serviceWorker from "./serviceWorker";
 
+// Use React Router to handle routing sub-page paths to specific function components
+import { BrowserRouter as Router } from "react-router-dom";
+
+// Use Amplify to map backend AWS resources, as identified in config.js
+import Amplify from "aws-amplify";
+import config from "./config";
+
+// Styling for <body> and subordinate tags (rendered at "root")
+import "./index.css";
+
+// Function component called by render
+import App from "./App";
+
+// Set variables for Amplify
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -31,14 +41,13 @@ Amplify.configure({
   }
 });
 
+// Run App.js under the control of React Router to handle sub-page path requests
 ReactDOM.render(
   <Router>
     <App />
   </Router>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// Use register() instead for faster loading and offline operation, but with some pitfalls
 serviceWorker.unregister();
