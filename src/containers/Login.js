@@ -5,6 +5,9 @@ import { useFormFields } from "../libs/hooksLib";
 // Use React Bootstrap to provide standard UI resources and styling
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
+// Use React Router to handle routing sub-page paths to specific function components
+import { Link } from "react-router-dom";
+
 // Use Amplify to interact with backend resources in Cognito
 import { Auth } from "aws-amplify";
 
@@ -72,6 +75,7 @@ export default function Login(props) {
             onChange={handleFieldChange}
           />
         </FormGroup>
+        <Link to="/login/reset">Forgot password?</Link>
         <LoaderButton
           block
           type="submit"

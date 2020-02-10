@@ -56,7 +56,10 @@ export default function Signup(props) {
       setIsLoading(false);
     }
     catch (e) {
-      alert(e.message);
+// Suppress this exception; enhancement to call Auth.resendSignUp() in this scenario
+      if (e.code !== "UsernameExistsException") {
+        alert(e.message);
+      }
       setIsLoading(false);
     }
   }
